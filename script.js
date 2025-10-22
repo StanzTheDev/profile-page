@@ -1,85 +1,78 @@
- // Reset validation messages
-        function resetValidation() {
-            const errorMessages = document.querySelectorAll('.error-message');
-            errorMessages.forEach(error => {
-                error.style.display = 'none';
-            });
-        }
 
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            resetValidation();
-            
-            const contactForm = document.getElementById('contactForm');
-            
-            if (contactForm) {
-                console.log('Form found, adding event listener');
-                
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    console.log('Form submitted');
-                    resetValidation();
+function resetValidation() {
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(error => {
+        error.textContent = '';
+    });
+}
 
-                    const fullName = document.getElementById('fullName');
-                    const email = document.getElementById('email');
-                    const subject = document.getElementById('subject');
-                    const message = document.getElementById('message');
-                    const successMessage = document.getElementById('contact-success');
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    resetValidation();
 
-                    let isValid = true;
+    const fullName = document.getElementById('fullName');
+    const email = document.getElementById('email');
+    const subject = document.getElementById('subject');
+    const message = document.getElementById('message');
+    const successMessage = document.getElementById('successMessage');
 
-                    // Name validation
-                    if (!fullName.value.trim()) {
-                        document.getElementById('name-error').style.display = 'block';
-                        isValid = false;
-                    }
+    const errorName = document.getElementById('name-error');
+    const errorEmail = document.getElementById('email-error');
+    const errorSubject = document.getElementById('subject-error');
+    const errorMessageEl = document.getElementById('message-error');
 
-                    // Email validation
-                    if (!email.value.trim()) {
-                        document.getElementById('email-error').style.display = 'block';
-                        isValid = false;
-                    } else if (!/\S+@\S+\.\S+/.test(email.value)) {
-                        document.getElementById('email-error').textContent = 'Please enter a valid email address.';
-                        document.getElementById('email-error').style.display = 'block';
-                        isValid = false;
-                    }
+    let isValid = true;
 
-                    // Subject validation
-                    if (!subject.value.trim()) {
-                        document.getElementById('subject-error').style.display = 'block';
-                        isValid = false;
-                    }
+    if (fullName.value.trim() === '') {
+        errorName.textContent = 'Please enter your full name.';
+        isValid = false;
+        fullName.classList.add('error');
+    } else {
+        fullName.classList.remove('error');
+    }
 
-                    // Message validation
-                    if (!message.value.trim()) {
-                        document.getElementById('message-error').textContent = 'Please enter your message.';
-                        document.getElementById('message-error').style.display = 'block';
-                        isValid = false;
-                    } else if (message.value.trim().length < 10) {
-                        document.getElementById('message-error').textContent = 'Message must be at least 10 characters long.';
-                        document.getElementById('message-error').style.display = 'block';
-                        isValid = false;
-                    }
+    if (email.value.trim() === '') {
+        errorEmail.textContent = 'Please enter your email address.';
+        isValid = false;
+        email.classList.add('error');
+    } else if (!/\S+@\S+\.\S+/.test(email.value)) {
+        errorEmail.textContent = 'Please enter a valid email address.';
+        isValid = false;
+        email.classList.add('error');
+    } else {
+        email.classList.remove('error');
+    }
+    if (subject.value.trim() === '') {
+        errorSubject.textContent = 'Please enter a subject.';
+        isValid = false;
+        subject.classList.add('error');
+    } else {
+        subject.classList.remove('error');
+    }
 
-                    console.log('Form validation result:', isValid);
+    if (message.value.trim() === '') {
+        errorMessageEl.textContent = 'Please enter your message.';
+        isValid = false;
+        message.classList.add('error');
+    } else if (message.value.trim().length < 10) {
+        errorMessageEl.textContent = 'Message must be at least 10 characters long.';
+        isValid = false;
+        message.classList.add('error');
+    } else {
+        message.classList.remove('error');
+    }
 
-                    // If form is valid, show success message and reset form
-                    if (isValid) {
-                        console.log('Form is valid, showing success message');
-                        if (successMessage) {
-                            successMessage.style.display = 'block';
-                            
-                            // Hide success message after 5 seconds
-                            setTimeout(() => {
-                                successMessage.style.display = 'none';
-                            }, 5000);
-                        }
-                        
-                        // Reset the form
-                        this.reset();
-                    }
-                });
-            } else {
-                console.log('Form not found!');
-            }
+    if (isValid) {
+        successMessage.style.display = 'flex';
+        
+        this.reset();
+        
+        [fullName, email, subject, message].forEach(field => {
+            field.classList.remove('error');
         });
+        
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 4000);
+    }
+});
