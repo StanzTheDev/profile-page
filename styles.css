@@ -371,7 +371,7 @@ p{
 }
 
 }
-body{
+/* body{
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
@@ -382,7 +382,7 @@ body{
    background: #c24a7c;
 background: radial-gradient(circle, rgba(194, 74, 124, 1) 0%, rgba(84, 139, 199, 1) 100%);
   }
-  
+   */
   .profile-card{
     /* background-color: #fff0f0; */
     background-color: #D6E8FA;
