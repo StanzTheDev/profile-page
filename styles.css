@@ -383,6 +383,11 @@ p{
 background: radial-gradient(circle, rgba(194, 74, 124, 1) 0%, rgba(84, 139, 199, 1) 100%);
   }
    */
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   .profile-card{
     /* background-color: #fff0f0; */
     background-color: #D6E8FA;
