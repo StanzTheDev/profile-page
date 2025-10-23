@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   <main  data-testid="test-about-page">
+         <div class="header">
+        <div class="header-content">
+            <button class="hamburger">
+                ☰
+            </button>
+        </div>
+        <div class="nav-menu">
+           <a href="contact.html" onclick="window.location.href='contact.html'" class="nav-link">Contact Me</a>
+            <a href="index.html" onclick="window.location.href='index.html'" class="nav-link">About Me</a>
+           <a href="home.html" onclick="window.location.href='home.html'" class="nav-link">Home</a>
+        </div>
+    <article data-testid="test-profile-card" class="profile-card">
+
+    <figure>
+      <img src="assets/IMG_2658.JPG" 
+           alt="Profile picture" 
+           data-testid="test-user-avatar" 
+           class="profile-picture">
+      <figcaption class="job-title" data-testid="test-user-job">Frontend Developer</figcaption>
+    </figure>
+
+   
+    <h1 data-testid="test-user-name">Sanyaolu Nofisat</h1>
+
+    
+    <p data-testid="test-user-bio">
+      Hi, I'm Nofisat! I'm a zealous web developer with expertise in building the best web applications. 
+    </p>
+
+   <div class="line"></div>
+  
+    <!--hobbies-->
+   <div class="hobbies">
+    <section
+     data-testid="test-user-hobbies">
+      <h2 class="interest-h1">Hobbies</h2>
+      <ul class="list">
+         <li>Sleeping</li>
+         <li>Listening to music</li>
+        <li>Watching movies</li>
+        <li>Coding</li>
+       
+      </ul>
+    </section>
+
+    <section data-testid="test-user-dislikes">
+      <h2 class="interest-h1">Dislikes</h2>
+      <ul class="list">
+        <li>Stress</li>
+        <li>Slow internet</li>
+        <li>Noise</li>
+        <li>Mosquitoes</li>
+      </ul>
+    </section>
+    </div>
+      <p class="current-time" data-testid="test-user-time">Current Time: <span id="currentTime"></span></p>
+
+
+    <nav data-testid="test-user-social-links" class="social-links">
+      <a href="https://www.linkedin.com/in/nofisat-sanyaolu-22354927b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         data-testid="test-user-social-linkedin">
+        <img class="socials-logo" src="assets/104493_linkedin_icon.png" alt="LinkedIn Profile">
+      </a>
+      <a href="https://github.com/StanzTheDev" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         data-testid="test-user-social-github">
+        <img class="socials-logo" src="assets/211904_social_github_icon.png" alt="GitHub Profile">
+      </a>
+      <a href="https://x.com/Sonat_The_Best?t=S0x1kCrYjJa7N1bxbDs3aA&s=09" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         data-testid="test-user-social-twitter">
+        <img class="socials-logo" src="assets/11053969_x_logo_twitter_new_brand_icon.png" alt="Twitter Profile">
+      </a>
+    </nav>
+
+  </article>
+<script src="script.js"></script>
+           <script src='about.js'></script>
+</body>
+</html>
